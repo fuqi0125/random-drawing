@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽学号</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="http://fuqi.lol:40061/i/2024/09/12/vmjtou.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>随机抽学号</h1>
+        <div class="inputs">
+            <input type="number" id="start-id" placeholder="开始学号" min="1">
+            <input type="number" id="end-id" placeholder="结束学号" min="1">
+        </div>
+        <button id="draw-button">走你！</button>
+        <div id="result" class="result">
+            <span id="random-id"></span>
+        </div>
+        <div class="settings">
+            <label class="toggle">
+                <input type="checkbox" id="fair-mode">
+                <div class="switch">
+                    <div class="circle"></div>
+                </div>
+                <span>公平模式</span>
+            </label>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="info-icon" viewBox="-1 -1 18 18">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+            </svg>
+        </div>
+        <div id="rule-container" class="rule-container" style="display: none;">
+            <p id="fair-mode-rules" style="display: none;">开启之后被抽到过的同学不会再被抽哦～</p>
+            <div id="exempted-ids"></div>
+            <button id="reset-rules-button" class="reset-error-button">重新来过</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="error.js"></script>
+</body>
+</html>

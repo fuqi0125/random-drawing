@@ -1,0 +1,266 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #affbff, #a0fff7, #b2ffe4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* 输入框之间的间距 */
+    margin-bottom: 10px;
+}
+
+input, button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box; /* 确保边距和宽度计算一致 */
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between; /* 输入框之间自动平分空白 */
+    gap: 0; /* 禁用 gap，让 justify-content 控制间隙 */
+    margin-bottom: 20px; /* 与按钮间距一致 */
+}
+
+input {
+    flex: 1; /* 确保输入框等宽 */
+    margin: 0 10px; /* 设置两个输入框之间的间距，与容器边缘间距一致 */
+    box-sizing: border-box; /* 确保 padding 和 border 计算在宽度内 */
+}
+
+input:first-child {
+    margin-left: 0; /* 去掉第一个输入框左侧多余间距 */
+}
+
+input:last-child {
+    margin-right: 0; /* 去掉第二个输入框右侧多余间距 */
+}
+
+.error {
+    display: none;
+    margin-top: 20px;
+    padding: 5px;
+    background: rgba(255, 100, 100, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s forwards;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.reset-error-button {
+    padding: 5px 5px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.reset-error-button:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大 */
+    background: rgba(255, 255, 255, 0.8); /* 悬停时背景更亮 */
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin-top: 0; /* 确保顶部间距与输入框一致 */
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px; /* 与其他间距统一 */
+}
+
+/* 公平模式容器样式 */
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.toggle input {
+    display: none; /* 隐藏默认的复选框 */
+}
+
+/* 自定义开关外壳 */
+.switch {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background: rgba(200, 200, 200, 0.8);
+    border-radius: 20px;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 开关的小圆 */
+.circle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* 激活状态 */
+input:checked + .switch {
+    background: rgba(100, 200, 100, 0.9);
+}
+
+input:checked + .switch .circle {
+    transform: translateX(20px); /* 圆点向右移动 */
+    background: rgba(255, 255, 255, 1); /* 确保圆点颜色始终为白色 */
+}
+
+/* 圆点动画 */
+.circle {
+    animation: circle-enter 0.3s forwards;
+}
+
+/* 动画效果 */
+@keyframes circle-enter {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+input:not(:checked) + .switch .circle {
+    animation: circle-exit 0.3s forwards;
+}
+
+@keyframes circle-exit {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.info-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    fill: #e1be97; /* 设置颜色 */
+    stroke: #e1be97; /* 设置边框颜色 */
+    stroke-width: 1; /* 设置边框粗细为 1 */
+    overflow: visible; /* 确保图形不会被裁剪 */
+}
+
+.result {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    color: #bc8a17; /* 和鸣谢名单样式一致 */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    text-align: center;
+}
+
+.rule-container p {
+    color: #e1be97; /* 金色文字 */
+    font-weight: bold; /* 加粗 */
+    margin-top: 0px; /* 调整顶部间隙，与底部间隙统一 */
+    margin-bottom: 5px; /* 确保顶部和底部一致 */
+}
+
+.rule-container {
+    padding: 10px; /* 统一上下左右的间距 */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s forwards;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    margin-top: 20px;
+}
+
+
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
